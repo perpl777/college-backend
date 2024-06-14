@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "singularName": "student",
+    "pluralName": "students",
+    "displayName": "student",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": false,
+      "maxLength": 50,
+      "required": true,
+      "minLength": 1
+    },
+    "surname": {
+      "type": "string",
+      "unique": false,
+      "maxLength": 50,
+      "required": true,
+      "minLength": 1
+    },
+    "patronymic": {
+      "type": "string",
+      "required": false,
+      "unique": false,
+      "maxLength": 50,
+      "minLength": 1
+    },
+    "course": {
+      "type": "integer",
+      "default": 1,
+      "max": 4,
+      "min": 1,
+      "required": true,
+      "unique": false
+    },
+    "specialization": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::specialization.specialization"
+    },
+    "url_github": {
+      "type": "string",
+      "unique": false,
+      "maxLength": 200,
+      "minLength": 10
+    },
+    "url_behance": {
+      "type": "string",
+      "unique": false,
+      "maxLength": 200,
+      "minLength": 10
+    },
+    "url_vk": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 200,
+      "unique": false
+    },
+    "url_photo": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "minLength": 10,
+      "maxLength": 200
+    },
+    "about_info": {
+      "type": "text",
+      "required": false,
+      "unique": false,
+      "maxLength": 500,
+      "minLength": 10
+    },
+    "student_technology": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student-technology.student-technology",
+      "inversedBy": "students"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false
+    },
+    "student_post": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student-post.student-post",
+      "inversedBy": "students"
+    }
+  }
+}

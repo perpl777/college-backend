@@ -24,6 +24,12 @@
       "relation": "manyToMany",
       "target": "api::post.post",
       "inversedBy": "tags"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categorys.categorys",
+      "inversedBy": "tags"
     }
   }
 }

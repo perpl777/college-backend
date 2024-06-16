@@ -787,6 +787,42 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategorysCategorys extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'categorys';
+    pluralName: 'categories';
+    displayName: 'category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tags: Attribute.Relation<
+      'api::categorys.categorys',
+      'manyToMany',
+      'api::tag.tag'
+    >;
+    name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categorys.categorys',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categorys.categorys',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Schema.CollectionType {
   collectionName: 'posts';
   info: {
@@ -1011,6 +1047,11 @@ export interface ApiTagTag extends Schema.CollectionType {
         maxLength: 25;
       }>;
     posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>;
+    categories: Attribute.Relation<
+      'api::tag.tag',
+      'manyToMany',
+      'api::categorys.categorys'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1118,6 +1159,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::categorys.categorys': ApiCategorysCategorys;
       'api::post.post': ApiPostPost;
       'api::specialization.specialization': ApiSpecializationSpecialization;
       'api::student.student': ApiStudentStudent;

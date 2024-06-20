@@ -770,10 +770,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    character: Attribute.Relation<
+    student: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
-      'api::character.character'
+      'api::student.student'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -821,41 +821,6 @@ export interface ApiCategorysCategorys extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::categorys.categorys',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCharacterCharacter extends Schema.CollectionType {
-  collectionName: 'characters';
-  info: {
-    singularName: 'character';
-    pluralName: 'characters';
-    displayName: 'character';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    student: Attribute.Relation<
-      'api::character.character',
-      'oneToOne',
-      'api::student.student'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::character.character',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::character.character',
       'oneToOne',
       'admin::user'
     > &
@@ -1200,7 +1165,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::categorys.categorys': ApiCategorysCategorys;
-      'api::character.character': ApiCharacterCharacter;
       'api::post.post': ApiPostPost;
       'api::specialization.specialization': ApiSpecializationSpecialization;
       'api::student.student': ApiStudentStudent;

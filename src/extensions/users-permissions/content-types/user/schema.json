@@ -65,10 +65,10 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "character": {
+    "student": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::character.character"
+      "target": "api::student.student"
     }
   }
 }

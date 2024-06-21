@@ -25,9 +25,9 @@
       "target": "api::post.post",
       "inversedBy": "tags"
     },
-    "categories": {
+    "category": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::categorys.categorys",
       "inversedBy": "tags"
     }

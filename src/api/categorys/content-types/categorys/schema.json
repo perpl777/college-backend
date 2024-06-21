@@ -14,9 +14,9 @@
   "attributes": {
     "tags": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::tag.tag",
-      "mappedBy": "categories"
+      "mappedBy": "category"
     },
     "name": {
       "type": "string",

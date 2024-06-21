@@ -806,7 +806,7 @@ export interface ApiCategorysCategorys extends Schema.CollectionType {
   attributes: {
     tags: Attribute.Relation<
       'api::categorys.categorys',
-      'manyToMany',
+      'oneToMany',
       'api::tag.tag'
     >;
     name: Attribute.String & Attribute.Required;
@@ -1052,9 +1052,9 @@ export interface ApiTagTag extends Schema.CollectionType {
         maxLength: 25;
       }>;
     posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>;
-    categories: Attribute.Relation<
+    category: Attribute.Relation<
       'api::tag.tag',
-      'manyToMany',
+      'manyToOne',
       'api::categorys.categorys'
     >;
     createdAt: Attribute.DateTime;

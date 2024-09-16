@@ -851,21 +851,6 @@ export interface ApiPostPost extends Schema.CollectionType {
         minLength: 1;
         maxLength: 500;
       }>;
-    urls_photos: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        minLength: 1;
-        maxLength: 800;
-      }>;
-    url_view: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        minLength: 1;
-        maxLength: 200;
-      }>;
-    url_file: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        minLength: 1;
-        maxLength: 200;
-      }>;
     worktype: Attribute.Relation<
       'api::post.post',
       'oneToOne',
@@ -881,6 +866,8 @@ export interface ApiPostPost extends Schema.CollectionType {
       'api::student.student'
     >;
     tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>;
+    photo: Attribute.Media;
+    file: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -987,12 +974,6 @@ export interface ApiStudentStudent extends Schema.CollectionType {
         minLength: 10;
         maxLength: 200;
       }>;
-    url_photo: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 10;
-        maxLength: 200;
-      }>;
     about_info: Attribute.Text &
       Attribute.SetMinMaxLength<{
         minLength: 10;
@@ -1014,6 +995,12 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       'manyToMany',
       'api::technology.technology'
     >;
+    user: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    photo: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

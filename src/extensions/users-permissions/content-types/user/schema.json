@@ -68,7 +68,8 @@
     "student": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::student.student"
+      "target": "api::student.student",
+      "mappedBy": "user"
     }
   }
 }

@@ -26,25 +26,6 @@
       "minLength": 1,
       "maxLength": 500
     },
-    "urls_photos": {
-      "type": "text",
-      "unique": false,
-      "minLength": 1,
-      "maxLength": 800
-    },
-    "url_view": {
-      "type": "string",
-      "required": false,
-      "unique": false,
-      "minLength": 1,
-      "maxLength": 200
-    },
-    "url_file": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 200,
-      "unique": false
-    },
     "worktype": {
       "type": "relation",
       "relation": "oneToOne",
@@ -70,6 +51,28 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "mappedBy": "posts"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
